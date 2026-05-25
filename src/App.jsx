@@ -1,8 +1,9 @@
 import { useState } from "react";
+
 import {
   HashRouter as Router,
   Routes,
-  Route
+  Route,
 } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
@@ -25,35 +26,31 @@ function Layout() {
 
   return (
     <div className="bg-ye-50 flex">
-      <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
-      <div className={`transition-all duration-300 min-h-screen flex-1 ${isSidebarOpen ? 'ml-72' : 'ml-20'}`}>
+      <Sidebar
+        isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
+      />
+
+      <div
+        className={`transition-all duration-300 min-h-screen flex-1 ${
+          isSidebarOpen ? "ml-72" : "ml-20"
+        }`}
+      >
         <Navbar />
+
         <div className="p-8">
-
           <Routes>
-
             <Route path="/dashboard" element={<Dashboard />} />
-
             <Route path="/assigned-works" element={<AssignedWorks />} />
-
             <Route path="/work-details" element={<WorkDetails />} />
-
             <Route path="/work-history" element={<WorkHistory />} />
-
             <Route path="/earnings" element={<Earnings />} />
-
             <Route path="/schedule" element={<Schedule />} />
-
             <Route path="/reviews" element={<Reviews />} />
-
             <Route path="/messages" element={<Messages />} />
-
             <Route path="/profile" element={<Profile />} />
-            
             <Route path="/notifications" element={<Notifications />} />
-
           </Routes>
-
         </div>
       </div>
     </div>
@@ -62,13 +59,12 @@ function Layout() {
 
 function App() {
   return (
-    <Routes>
-
-      <Route path="/" element={<Login />} />
-
-      <Route path="/*" element={<Layout />} />
-
-    </Routes>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/*" element={<Layout />} />
+      </Routes>
+    </Router>
   );
 }
 
